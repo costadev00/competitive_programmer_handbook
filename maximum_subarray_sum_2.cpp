@@ -1,4 +1,6 @@
-// the time complexity is O(n³), because of the 3 nested loops
+// it is easy to make algo 1 more efficient by removing one loop from it.
+//This is possible by calculating the sum at the same time when the right end of the subarray moves. The result is the following code:
+// the time complexity is O(n²), because of the 2 nested loops
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -21,13 +23,10 @@ int main()
     }
     for (int a = 0; a < n; a++)
     {
+        int sum = 0;
         for (int b = a; b < n; b++)
         {
-            int sum = 0;
-            for (int k = a; k <= b; k++)
-            {
-                sum += array[k];
-            }
+            sum += array[b];
             best = max(best, sum);
         }
     }
