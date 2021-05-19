@@ -2,30 +2,30 @@
 
 using namespace std;
 
-vector<int> permutation = {0, 1, 2, 3};
+vector<int> permutation;
 bool chosen[100] = {false};
-int n = permutation.size();
-void search()
+void search(int n)
 {
 
     if (permutation.size() == n)
     {
-        // for (int k = 0; i < permutation.size(); k++)
-        // {
-        cout << "alou\n";
-        // }
+        for (int k = 0; k < permutation.size(); k++)
+        {
+            cout << permutation[k] << ' ';
+        }
+        cout << endl;
         //process the permutation
     }
     else
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i <= n; i++)
         {
             if (chosen[i])
                 continue;
 
             chosen[i] = true;
             permutation.push_back(i);
-            search();
+            search(n);
             chosen[i] = false;
             permutation.pop_back();
         }
@@ -33,6 +33,11 @@ void search()
 }
 int main()
 {
+    int n;
+    cin >> n;
+    // for (int i = 0; i < n; i++)
+    //     permutation.push_back(i);
+    search(n);
 
     return 0;
 }
